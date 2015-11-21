@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	h1 	!{listing_info.title}
+
+	ul
+
+		li
+			img(src=image_location style="height:300px;width:300px;")
+
+		li
+			p| !{listing_info.description}	
+		li
+			p|Bedrooms:#{listing_info.bedrooms}
+		li
+			p| Can be messaged at #{listing_info.contact_email}
+
+		li
+
+		form(action=message_sender, method="POST")
+			legend
+				Send a message to the owner
+			fieldset 
+				textarea(name="message" class="form-control")
+				br
+				input(type="submit" class="btn btn-primary")

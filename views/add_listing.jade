@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	h1 Add a listing
+
+	div(class="col-lg-6 col-lg-offset-3")
+		form(action="/add-listing" method="POST" enctype="multipart/form-data")
+			legend
+				center
+					p| Describe your cool pad!
+			h3 Give your listing a title!
+			input(type="text" name="title" class="form-control")
+			br
+			h3 What city?
+			input(type="text" name="city" class="form-control" required)
+			h3 Apartment or House?
+			select(name="housing_type" class="form-control" required)
+					Option(default) 			
+					Option(value="Apartment") Apartment
+					Option(value="House") House
+			br
+			
+			h3 How many bedrooms?
+			input(type="number" min="1" max="100" name="bedrooms" class="form-control" required)
+			br
+			h3 Give us a short description about your place!
+			textarea( name="description" class="form-control" required)
+			br
+			h3 Upload a picture (You are limited to one picture so really use a good one!)
+			input(type="file" name="image" class="form-control" required)
+			br
+			h3 How much is your listing?
+			input(type="number" name="price" min="100" max="100000000" class="form-control" required)
+			br
+			h3 What email should people contact you at?
+			input(type="text" name="email" class="form-control" required)
+			br
+			center
+				input(type="submit" class="btn btn-primary" value="submit")			
+
+			br
+			br
+			br
+

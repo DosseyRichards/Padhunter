@@ -1,0 +1,50 @@
+extends layout
+
+block content
+	div(class="col-lg-3")
+		div(class="jumbotron")
+			form(action="/search" method="POST")
+				legend Search for more apartments	
+				div(class="form-group")
+					label(for="housing_type") Housing Type:				
+					select(name="housing_type" class="form-control" required)
+						Option(default) 	
+						Option(value="Apartment") Apartment
+						Option(value="Houses") House
+					label(for="bedrooms") Bedrooms:
+					input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
+					label(for="city") City:
+					input(type="text" placeholder="city" name="city" class="form-control" required)
+					label(for="min") Min $:
+					input(type="number" class="form-control" name="min" placeholder="minimum...?" required)
+					label(for="max") Max $:
+					input(type="number" class="form-control" name="max" placeholder="maximum...?" required)
+						
+						
+					center
+						input(type="submit" class="btn btn-primary btn-md" value="Search")
+	div(class="col-lg-6")
+		h3 Results that match your requirements: 		
+		unless Results.id
+			each Result in Results
+				a(href="/listing-info/" + Result.id)
+					div(class="jumbotron")
+						div(class="media" )
+							div(class="media-left")
+								img(class="pull-right" src="#")
+							div(class="media-body")			
+								h4(class="media-heading") #{Result.title}
+
+
+				br
+		if !Results
+			p No Result :( 
+		
+	div(class="col-lg-3")
+		h4 All Results in the same city within your budget
+		unless City_Results.id
+			each City_Result in City_Results
+				p #{City_Result.id}
+				br
+		if !City_Results
+			p No results 
