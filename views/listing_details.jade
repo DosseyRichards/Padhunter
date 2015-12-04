@@ -1,26 +1,60 @@
 extends layout
 
 block content
-	h1 	!{listing_info.title}
+	!{alert_message}
+	center
+		h1!{listing_info.title}
+	br
 
-	ul
+	div(class="col-lg-6")
+		ul(style="list-style:none;")
 
-		li
-			img(src=image_location style="height:300px;width:300px;")
+			li(style="decorations:none;")
+				img(src=image_location style="height:300px;width:300px;")
+			br
 
-		li
-			p| !{listing_info.description}	
-		li
-			p|Bedrooms:#{listing_info.bedrooms}
-		li
-			p| Can be messaged at #{listing_info.contact_email}
+			
+			li
 
-		li
+				b
+					p| State: !{listing_info.state}
+						
+			li
 
-		form(action=message_sender, method="POST")
-			legend
-				Send a message to the owner
-			fieldset 
-				textarea(name="message" class="form-control")
-				br
-				input(type="submit" class="btn btn-primary")
+				b
+					p| City: !{listing_info.city}
+			li
+
+				b
+					p| Cost: !{listing_info.price} /per month
+			li
+
+				b
+					p| Bedrooms: !{listing_info.bedrooms}
+			li
+
+				b
+					p| Bathrooms: !{listing_info.bathrooms}
+
+			li
+				u
+					b
+						h3 Additional info:
+				div(class="jumbotron")
+					p| !{listing_info.description}
+
+	div(class="col-lg-3")
+			form(action=message_sender, method="POST")
+				legend
+					b 
+						| Send a message to the owner
+				fieldset
+					label(for="sender-email") Your email:
+					br
+					input(type="text" name="sender-email" class="form-control" style="width:200px;")
+					br
+					label(for="message") Message:
+					br
+					textarea(name="message" class="form-control")
+					br
+					input(type="submit" class="btn btn-primary" placeholder="Example:Can we see more photos?...."  value="Send message") 

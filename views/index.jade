@@ -1,43 +1,48 @@
 extends layout
 
 block content
-
-	h2 Welcome to the PadHunter!
+	center
+		h2 Welcome to the PadHunter!
 	br
-	div(class="col-lg-8 col-lg-offset-2")
-		div(class="jumbotron")
+	div(class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 col-xs-12")
+		div(class="jumbotron" style="border-radius:100px;")
+			center
+				h2 Search 
+
+
 			form(action="/search" method="POST")
 				label(for="state" ) State:
-				select(name="state" class="form-control" style="width:200px;" required)
-					Option(default) .......State?				
-					Option(value="AK") AK
+				select(name="state" class="form-control" style="width:250px;" required)
 					each state in state_options
 						option(value=state.abbreviation) #{state.abbreviation}			
 
 
 
 				h5(style="font-weight:bold;") City:
-				input(type="text" name="city" class="form-control" required)
+				input(type="text" name="city" class="form-control" style="width:250px;" required) 
 				br
 				label(for="housing_type") What type of place you looking for?:
 				
-				select(name="housing type" class="form-control" required)
-					Option(default) .......Apartment or House?				
+				select(name="housing type" class="form-control" style="width:200px;" required)
+					Option(default)				
 					Option(value="Apartment") Apartment
 					Option(value="House") House
 				br
 				h5(style="font-weight:bold;") How many bedrooms?:				
 				input(type="number" name="bedrooms" min="1" max="100" style="width:auto;" class="form-control" required)
 				br
+				h5(style="font-weight:bold;") How many bathroomss?:				
+				input(type="number" name="bathrooms" min="1" max="100" style="width:auto;" class="form-control" required)
+				br
 				label(for="min") What's your price range?:
 				div(class="form-inline")				
-					input(type="number" class="form-control" name="min" placeholder="minimum...?" required)
+					input(type="number" class="form-control" name="min" placeholder="minimum $$$...?" required)
 
-					input(type="number" class="form-control" name="max" placeholder="maximum...?" required)
+					input(type="number" class="form-control" name="max" placeholder="maximum $$$...?" required)
 				br
 				br
 				center
-					input(type="submit" class="btn btn-primary btn-md" value="Search")
+					input(type="submit" class="btn btn-primary btn-lg" value="Search")
 	div(class="col-lg-2")
 		a(href="/add-listing")
 			button(class="btn btn-primary btn-lg") Add a listing
