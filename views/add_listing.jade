@@ -1,9 +1,10 @@
 extends layout
 
 block content
+	!{alert_message}
+
 	center
 		h1 Add a listing
-
 	div(class="col-lg-6 col-lg-offset-3")
 		form(action="/add-listing" method="POST" enctype="multipart/form-data")
 			legend
@@ -12,38 +13,38 @@ block content
 			label(for="title") Give your listing a title!
 			input(type="text" name="title" class="form-control")
 			br
-			h5 What state?
+			label(for="state") what state?
 			select(name="state" class="form-control" style="width:200px;" required)
 					each state in state_options
 						option(value=state.abbreviation) #{state.abbreviation}	
 			br
-			h5 What city?
+			label(for="city") What city?
 			input(type="text" name="city" class="form-control" required)
 			br
-			h5 Apartment or House?
+			label(for="housing_type") Apartment or House?
 			select(name="housing_type" class="form-control" required)
 					Option(default) 			
 					Option(value="Apartment") Apartment
 					Option(value="House") House
 			br
 			
-			h5 How many bedrooms?
+			label(for="bedrooms") How many bedrooms?
 			input(type="number" min="1" max="100" name="bedrooms" class="form-control" required)
 			br
-			h5 How many bathrooms?
+			label(for="bathrooms") How many bathrooms?
 			input(type="number" min="1" max="1000" name="bathrooms" class="form-control" required)
 			br
-			h5 Give us a short description about your place!
+			label(for="description") Give us a short description about your place!
 			textarea( name="description" class="form-control" required)
 			br
-			h5 Upload a picture 
+			label(for="image") Upload a picture 
 			p (You are limited to one picture so really use a good one!)
 			input(type="file" name="image" class="form-control" required)
 			br
-			h5 How much is your listing?
+			label(for="price") How much is your listing?
 			input(type="number" name="price" min="100" max="100000000" class="form-control" required)
 			br
-			h5 What email should people contact you at?
+			label(for="email") What email should people contact you at?
 			input(type="text" name="email" class="form-control" required)
 			br
 			center

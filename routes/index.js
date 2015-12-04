@@ -208,7 +208,7 @@ router.post('/add-listing',upload.single('image'), function(req,res){
   new_Listing.price = req.body.price;
   new_Listing.save();;
 console.log(new_Listing);
-res.send('Success!');
+res.render('add_listing', {state_options:states,alert_message:'<div class="alert alert-success" role="alert">Your listing was succesfully added!!</div>'});
 });
 
 

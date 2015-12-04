@@ -4,10 +4,10 @@ block content
 	center
 		h1 Search
 	br
-	div(class="col-lg-3")
+	div(class="col-lg-3 col-sm-12")
 		div(class="jumbotron")
 			form(action="/search" method="POST")
-				legend Search for more apartments	
+				legend Search for apartments	
 				div(class="form-group")
 					label(for="housing_type") Housing Type:				
 					select(name="housing_type" class="form-control" required)
@@ -30,7 +30,7 @@ block content
 						
 					center
 						input(type="submit" class="btn btn-primary btn-md" value="Search")
-	div(class="col-lg-6")
+	div(class="col-lg-6 col-sm-12")
 		h3(style="padding-left:3px;") Results that match your requirements: 
 		div(style="border-style:;border-top:1px solid black;padding-left:10px;")		
 			br
@@ -48,11 +48,13 @@ block content
 											li 
 												| Bedrooms: !{Result.bedrooms}
 											li 
+												| Bathrooms: !{Result.bathrooms}
+											li 
 												| Cost: !{Result.price} /month
 
 					br
 		if !Results
-			p No Result :( 
+			p No Results.
 		
 		h4(style="padding-left:5px;") All Results in the same city within your budget:
 		br
@@ -73,4 +75,4 @@ block content
 											li 
 												| Cost: !{City_Result.price} /month
 		if !City_Results
-			p No results 
+			p No Results.

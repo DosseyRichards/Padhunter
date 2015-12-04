@@ -9,6 +9,14 @@ htmL
 		div(class="container")
 			h1(style="a:color{color:black;}") #[a(href="/" style="color:black;") Padhunter]
 			br
+			nav(class="navbar navbar-default")			
+				div(class="container-fluid")
+					div(class="navbar-header")
+						a(class="navbar-brand" href="#") Padhunter
+					ul(class="nav navbar-nav")
+						li(role="presentation",class="active") #[a(href="#") Home]
+						li(role="presentation")  #[a(href="/add-listing") Add a listing]
+						li(role="presentation")  #[a(href="/search") Search]
 			block content
 
 
