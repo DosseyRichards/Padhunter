@@ -5,7 +5,7 @@ block content
 		h1 Search
 	br
 	div(class="col-lg-3 col-sm-12")
-		div(class="jumbotron")
+		div(class="jumbotron" style="background-color:pink;border-radius:90px;")
 			form(action="/search" method="POST")
 				legend Search for apartments	
 				div(class="form-group")
@@ -18,10 +18,16 @@ block content
 					input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
 					label(for="bathrooms") Bathrooms:
 					input(type="number"  placeholder="bathrooms" name="bathrooms" class="form-control" required)
-					label(for="state") State:
-					input(type="text" placeholder="state" name="state" class="form-control" required)
+					label(for="state" ) State:
+					select(name="state" class="form-control" required)
+						each state in state_options
+							option(value=state.abbreviation) #{state.abbreviation}		
 					label(for="city") City:
 					input(type="text" placeholder="city" name="city" class="form-control" required)
+					br
+					u
+						b
+							| Budget:
 					label(for="min") Min $:
 					input(type="number" class="form-control" name="min" placeholder="minimum...?" required)
 					label(for="max") Max $:
@@ -37,8 +43,8 @@ block content
 			unless Results.id
 				each Result in Results
 					a(href="/listing-info/" + Result.id)
-						div(class="jumbotron" style="border-radius:70px;")
-							div(class="media" )
+						div(class="jumbotron" style="border-radius:10px;border-style:solid;border-color:pink;border-width:15px;")
+							div(class="media" style="color:grey;" )
 								div(class="media-left")
 									img( style="height:75px;width:75px;",src= "/listing_images/" +Result.img)
 								div(class="media-body")			
@@ -63,7 +69,7 @@ block content
 			unless City_Results.id
 				each City_Result in City_Results
 					a(href="/listing-info/" + City_Result.id)
-						div(class="jumbotron" style="border-radius:70px;")
+						div(class="jumbotron" style="border-radius:7px;background-color:pink;")
 							div(class="media" )
 								div(class="media-left")
 								div(class="media-body")			

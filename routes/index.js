@@ -115,33 +115,32 @@ router.get('/all', function(req, res){
 
 
 
-
-
 //search engine filter using the mongoose query builder. (check mongoose docs for more info and sytnax).
 ///A little bit of callback hell here. Watchout!
 router.post('/search', function(req,res){
-  
-  console.log(req.body);
+///This will make sure all search queries in the cities are lower case since MONGODB is case sensitive. 
+var city = req.body.city;
+var lower_case_city = city.toLowerCase()
+
   Listing.find().
   where('price').gt(req.body.min).lt(req.body.max).
   where('bedrooms').equals(req.body.bedrooms).
-  where('city').equals(req.body.city).
+  where('city').equals(lower_case_city).
   where('bathrooms').equals(req.body.bathrooms).
-  sort('bedrooms').
+  sort('price').
   exec(function(err, listings_docs){
+    
+/*This query get's search information of a broader set of parameters. Getting docuemnts in that city and price range.
+*/
     Listing.find().
-    where('city').equals(req.body.city).
+    where('city').equals(lower_case_city).
     where('price').gt(req.body.min).lt(req.body.max).
     sort('price').
-    exec(function(err, listings_docs_city){
-
-
-
-          
+    exec(function(err, listings_docs_city){          
             if(err){console.log(err);}
             if(!err){
               var image_url_src = "/listing_images/"+listings_docs_city.img;
-              res.render('search', {Results:listings_docs, City_Results: listings_docs_city,image_url:image_url_src});
+              res.render('search', {Results:listings_docs, City_Results: listings_docs_city,image_url:image_url_src,state_options:states});
             }
 
     });
@@ -150,7 +149,7 @@ router.post('/search', function(req,res){
 
 
 router.get('/search', function(req,res){
-  res.render('search', {Results:"",City_Results:""});
+  res.render('search', {Results:"",City_Results:"",state_options:states});
 });
 
 ///testing the query for the search engine! 
@@ -173,15 +172,9 @@ router.post('/send-message/:listing_id', function(req,res){
    cc:      "else <else@your-email.com>",
    subject: "Someone wants to know more about your listing"
 }, function(err, message) {
-    if(err){
-        console.log(err);
-    }
-    if(message){
-        res.render('index');
+        res.render('message');
 
         }
-    }
-
     );
   });
 });
@@ -194,9 +187,13 @@ router.get('/add-listing', function(req,res){
 
 ///Saving data from the from
 router.post('/add-listing',upload.single('image'), function(req,res){
+var city = req.body.city;
+var lower_case_city = city.toLowerCase()
+
+
   var new_Listing = new Listing;
   new_Listing.title = req.body.title;
-  new_Listing.city = req.body.city;
+  new_Listing.city = lower_case_city;
   new_Listing.bedrooms = req.body.bedrooms;
   new_Listing.bathrooms = req.body.bathrooms
   new_Listing.state = req.body.state;
@@ -207,8 +204,10 @@ router.post('/add-listing',upload.single('image'), function(req,res){
   new_Listing.date_submitted = Date.now();
   new_Listing.price = req.body.price;
   new_Listing.save();;
-console.log(new_Listing);
-res.render('add_listing', {state_options:states,alert_message:'<div class="alert alert-success" role="alert">Your listing was succesfully added!!</div>'});
+console.log(new_Listing._id);
+var link = "127.0.0.1:3000/listing-info/" + new_Listing._id;
+res.render('link_share', {Listing_link:link});
+
 });
 
 

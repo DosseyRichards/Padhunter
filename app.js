@@ -31,8 +31,9 @@ app.use('/', routes);
 app.use('/users', users);
 
 
-//simple image service that allows me to get images from a directoy that doesn't technically exist. 
+//simple image services that allows me to get images from a directoy that doesn't technically exist. 
 app.use('/listing_images',express.static('image_uploads'));
+app.use('/logo_images',express.static('resources/images'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
