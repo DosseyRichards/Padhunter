@@ -1,21 +1,22 @@
-<-dosseyrichards->/<-candylease2->:
+dosseyrichards/candyleaserelease:
+  # This Basic Distelli Manifest assumes the following
+  # has been provisioned on the destination deploy server:
+  #
+  # OS: Ubuntu
+  # Installed Packages:
+  #   nodejs >= 0.9   [sudo apt-get install nodejs]
+  #   npm >= 1.1      [sudo apt-get install npm]
+  #
 
-PkgInclude:
-  - '*'
-
-PkgExclude:
-  - node_modules/
-
-PreRelease:
-  - npm install
-
-PreInstall:
-  - sudo apt-get update
-  - sudo apt-get install nodejs -y
-  - sudo apt-get install npm -y
-
-PostInstall:
-  - npm install
-
-Exec:
-  - /usr/bin/nodejs app.js
+  PkgInclude:
+    - server.js
+  PkgExclude:
+    - node_modules/
+  PreInstall:
+    - echo "PreInstall Starting."
+  PostInstall:
+    - echo "PostInstall Starting."
+    - npm install
+  Exec:
+    - echo "Exec Starting."
+    - exec nodejs server.js
