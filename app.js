@@ -13,7 +13,7 @@ var express_session = require('express-session');
 var passport = require('passport');
 
 ///mongoose config
-mongoose.connect('mongodb://localhost/ByOwner_database', function(err){if(!err)console.log('Successfully connected to database!!');if(err)console.log(err)});
+mongoose.connect('mongodb://104.236.253.101/ByOwner_database', function(err){if(!err)console.log('Successfully connected to database!!');if(err)console.log(err)});
 var db = mongoose.connection;
 
 // view engine setup
