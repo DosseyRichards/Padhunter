@@ -3,13 +3,12 @@ extends layout
 block content
 	!{alert_message}
 
-	center
-		h1 Add a listing
 	div(class="col-lg-6 col-lg-offset-3")
 		div(class="jumbotron" style="background-color:pink;border-radius:70px;border-width:7px;border-color:skyblue;border-style:solid;")
 			form(action="/add-listing" method="POST" enctype="multipart/form-data")
 				legend
 					center
+						h2 Add a listing
 						img(src="/logo_images/Candy_Lease_logo.png" style="height:75px;width:75px;")
 						p| Describe your cool pad!
 				label(for="title") Give your listing a title!

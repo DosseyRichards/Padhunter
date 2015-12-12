@@ -5,7 +5,7 @@ block content
 		h1 Search
 	br
 	div(class="col-lg-3 col-sm-12")
-		div(class="jumbotron" style="background-color:pink;border-radius:90px;")
+		div(class="jumbotron" style="background-color:pink;border-radius:90px;border-style:solid;border-color:skyblue;border-width:5px;")
 			form(action="/search" method="POST")
 				legend Search for apartments	
 				div(class="form-group")
@@ -17,21 +17,21 @@ block content
 					label(for="bedrooms") Bedrooms:
 					input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
 					label(for="bathrooms") Bathrooms:
-					input(type="number"  placeholder="bathrooms" name="bathrooms" class="form-control" required)
+					input(type="number"  placeholder="Bathrooms" name="bathrooms" class="form-control" required)
 					label(for="state" ) State:
 					select(name="state" class="form-control" required)
 						each state in state_options
 							option(value=state.abbreviation) #{state.abbreviation}		
 					label(for="city") City:
-					input(type="text" placeholder="city" name="city" class="form-control" required)
+					input(type="text" placeholder="City" name="city" class="form-control" required)
 					br
 					u
 						b
 							| Budget:
 					label(for="min") Min $:
-					input(type="number" class="form-control" name="min" placeholder="minimum...?" required)
+					input(type="number" class="form-control" name="min" placeholder="Minimum...?" required)
 					label(for="max") Max $:
-					input(type="number" class="form-control" name="max" placeholder="maximum...?" required)
+					input(type="number" class="form-control" name="max" placeholder="Maximum...?" required)
 						
 						
 					center
