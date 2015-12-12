@@ -169,7 +169,7 @@ router.post('/send-message/:listing_id', function(req,res){
    text:    req.body.message, 
    from:    "<padhuntertest@gmail.com>", 
    to:      listing_email,
-   cc:      "else <else@your-email.com>",
+   "reply-to": listing_email + "," + req.body.email,
    subject: "Someone wants to know more about your listing"
 }, function(err, message) {
         res.render('message');
