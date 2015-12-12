@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	div(class="col-lg-12 col-md-12 col-sm-12 col-xs-12")
+		div(class="jumbotron" style="background-color:pink;")
+			div(class="alert alert-success")
+					center
+						Strong
+							Your Listing was successfully add!
+			h4  This is the link to your listing! Share it with friends and family so people might see it!
+			label(for="link") URL:
+			form(method="POST" action="#")
+				input(type="text" value="#{Listing_link}" name="city" class="form-control" required)
