@@ -79,7 +79,13 @@ var Listing = mongoose.model('Listing', Listing_Schema);
 
 var User_instance = mongoose.model('User', User_Schema);
 
+router.get('/aboutus', function(req,res){
+    res.render('aboutus');
+});
 
+router.get('/contactus', function(req,res){
+    res.render('contactus');
+});
 
 
 
