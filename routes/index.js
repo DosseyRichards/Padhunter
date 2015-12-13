@@ -126,7 +126,7 @@ router.get('/all', function(req, res){
 router.post('/search', function(req,res){
 ///This will make sure all search queries in the cities are lower case since MONGODB is case sensitive. 
 var city = req.body.city;
-var lower_case_city = city.toLowerCase()
+var lower_case_city = city.toLowerCase();
 
   Listing.find().
   where('price').gt(req.body.min).lt(req.body.max).
