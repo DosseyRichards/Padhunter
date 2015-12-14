@@ -132,6 +132,7 @@ var lower_case_city = city.toLowerCase();
   where('price').gt(req.body.min).lt(req.body.max).
   where('bedrooms').equals(req.body.bedrooms).
   where('city').equals(lower_case_city).
+  where('state').equals(req.body.state).
   where('bathrooms').equals(req.body.bathrooms).
   sort('date_submitted').
   exec(function(err, listings_docs){
@@ -140,6 +141,7 @@ var lower_case_city = city.toLowerCase();
 */
     Listing.find().
     where('city').equals(lower_case_city).
+    where('state').equals(req.body.state).
     where('price').gt(req.body.min).lt(req.body.max).
     sort('price').
     exec(function(err, listings_docs_city){          
