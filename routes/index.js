@@ -133,7 +133,7 @@ var lower_case_city = city.toLowerCase();
   where('bedrooms').equals(req.body.bedrooms).
   where('city').equals(lower_case_city).
   where('bathrooms').equals(req.body.bathrooms).
-  sort('price').
+  sort('date_submitted').
   exec(function(err, listings_docs){
     
 /*This query get's search information of a broader set of parameters. Getting docuemnts in that city and price range.

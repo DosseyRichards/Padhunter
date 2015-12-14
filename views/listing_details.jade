@@ -7,42 +7,43 @@ block content
 	br
 
 	div(class="col-lg-6")
-		ul(style="list-style:none;")
+		ul(style="list-style:none;" )
 
 			li(style="decorations:none;")
-				img(src=image_location style="height:300px;width:300px;")
-			li
+				img(src=image_location style="height:300px;width:300px;border-radius:19x;")
+			br
+			li(style="color:black;")
 
 				b
-					p| State: !{listing_info.state}
-						
-			li
+					p| State:  !{listing_info.state}
+					
+			li(style="color:black;")
 
 				b
 					p| City: !{listing_info.city}
-			li
+			li(style="color:black;")
 
 				b
 					p| Cost: !{listing_info.price} /per month
-			li
+			li(style="color:black;")
 
 				b
 					p| Bedrooms: !{listing_info.bedrooms}
-			li
+			li(style="color:black;")
 
 				b
 					p| Bathrooms: !{listing_info.bathrooms}
 
-			li
-				u
-					b
-						h3 Additional info:
-				div(class="jumbotron")
+			div(class="jumbotron")
+				li
+					u
+						b
+							h3 Description:
 					p| !{listing_info.description}
 
 	div(class="col-lg-3")
-			form(action=message_sender, method="POST")
-				legend
+			form(action=message_sender, method="POST" style="Color:black;")
+				legend(style="color:black;")
 					b 
 						| Send a message to the owner
 				fieldset
