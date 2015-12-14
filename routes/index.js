@@ -214,7 +214,16 @@ var lower_case_city = city.toLowerCase()
   new_Listing.save();;
 console.log(new_Listing._id);
 var link = "127.0.0.1:3000/listing-info/" + new_Listing._id;
+server.send({
+   text:    "Thank you for registing your listing with Candy Lease!", 
+   from:    "<padhuntertest@gmail.com>", 
+   to:      new_Listing.contact_email,
+   subject: "Thank you for registering your listing!"
+}, 
+function(err, message) {
+
 res.render('link_share', {Listing_link:link});
+});
 
 });
 
