@@ -174,7 +174,7 @@ router.post('/send-message/:listing_id', function(req,res){
   Listing.findOne({_id:req.params.listing_id}, function(err, listing_details){
     var listing_email = listing_details.contact_email;
     server.send({
-   text:    req.body.message +"                  | |To reply simply reply to this email! ||", 
+   text:    req.body.message +" ||****** To respond simply reply to this email! ******||", 
    from:    "<padhuntertest@gmail.com>", 
    to:      listing_email,
    "reply-to": listing_email + "," + req.body.email,
