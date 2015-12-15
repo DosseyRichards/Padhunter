@@ -10,8 +10,8 @@ var upload = multer({ dest: './image_uploads/' });
 var email   = require("emailjs");
 
 var server  = email.server.connect({
-   user:    "padhuntertest", 
-   password:"padhuntertest123", 
+   user:    "candyleasebeta", 
+   password:"leasecandy123", 
    host:    "smtp.gmail.com", 
    ssl:     true
 });
@@ -174,11 +174,11 @@ router.post('/send-message/:listing_id', function(req,res){
   Listing.findOne({_id:req.params.listing_id}, function(err, listing_details){
     var listing_email = listing_details.contact_email;
     server.send({
-   text:    req.body.message, 
+   text:    req.body.message +"                  | |To reply simply reply to this email! ||", 
    from:    "<padhuntertest@gmail.com>", 
    to:      listing_email,
    "reply-to": listing_email + "," + req.body.email,
-   subject: "Someone wants to know more about your listing"
+   subject: "Someone wants to know more about your listing!"
 }, function(err, message) {
         res.render('message');
 
@@ -213,10 +213,10 @@ var lower_case_city = city.toLowerCase()
   new_Listing.price = req.body.price;
   new_Listing.save();;
 console.log(new_Listing._id);
-var link = "127.0.0.1:3000/listing-info/" + new_Listing._id;
+var link = "http://candylease.com/listing-info/" + new_Listing._id;
 server.send({
-   text:    "Thank you for registing your listing with Candy Lease!", 
-   from:    "<padhuntertest@gmail.com>", 
+   text:    "Thank you for registing your listing with Candy Lease! Here is your link: "+ link +" . Feel free to share it with friends!" , 
+   from:    "<info@candylease.com>", 
    to:      new_Listing.contact_email,
    subject: "Thank you for registering your listing!"
 }, 
