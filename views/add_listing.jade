@@ -3,7 +3,7 @@ extends layout
 block content
 	!{alert_message}
 
-	div(class="col-lg-6 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12")
+	div(class="col-lg-6 col-lg-offset-3 col-md-12 hidden-sm hidden-xs")
 		div(class="jumbotron" style="background-color:pink;border-radius:70px;border-width:7px;border-color:skyblue;border-style:solid;")
 			form(action="/add-listing" method="POST" enctype="multipart/form-data")
 				legend
@@ -54,4 +54,51 @@ block content
 			br
 			br
 			br
-
+	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
+			form(action="/add-listing" method="POST" enctype="multipart/form-data" style="Color:black;")
+					legend
+						center
+							h2 Add a listing
+							img(src="/logo_images/Candy_Lease_logo.png" style="height:75px;width:75px;")
+							p| Describe your cool pad!
+					label(for="title") Give your listing a title!
+					input(type="text" name="title" class="form-control")
+					br
+					label(for="state") what state?
+					select(name="state" class="form-control" style="width:200px;" required)
+							each state in state_options
+								option(value=state.abbreviation) #{state.abbreviation}	
+					br
+					label(for="city") What city?
+					input(type="text" name="city" class="form-control" required)
+					br
+					label(for="housing_type") Apartment or House?
+					select(name="housing_type" class="form-control" required)
+							Option(default) 			
+							Option(value="Apartment") Apartment
+							Option(value="House") House
+					br		
+					label(for="bedrooms") How many bedrooms?
+					input(type="number" min="1" max="100" name="bedrooms" class="form-control" required)
+					br
+					label(for="bathrooms") How many bathrooms?
+					input(type="number" min="1" max="1000" name="bathrooms" class="form-control" required)
+					br
+					label(for="description") Give us a short description about your place!
+					textarea( name="description" class="form-control" required)
+					br
+					label(for="image") Upload a picture 
+					p (You are limited to one picture so really use a good one!)
+					input(type="file" name="image" class="form-control" required)
+					br
+					label(for="price") How much is your listing?
+					input(type="number" name="price" min="100" max="100000000" class="form-control" required)
+					br
+					label(for="email") What email should people contact you at?
+					input(type="email" name="email" class="form-control" required)
+					br
+					center
+						input(type="submit" class="btn btn-primary btn-lg" value="submit")		
+			br 
+			br
+					

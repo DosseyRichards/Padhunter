@@ -6,7 +6,7 @@ block content
 		h1!{listing_info.title}
 	br
 
-	div(class="col-lg-6")
+	div(class="col-lg-6 hidden-sm hidden-xs")
 		ul(style="list-style:none;" )
 
 			li(style="decorations:none;")
@@ -41,7 +41,7 @@ block content
 							h3 Description:
 					p| !{listing_info.description}
 
-	div(class="col-lg-3")
+	div(class="col-lg-3 hidden-sm hidden-xs")
 			form(action=message_sender, method="POST" style="Color:black;")
 				legend(style="color:black;")
 					b 
@@ -56,3 +56,51 @@ block content
 					textarea(name="message" placeholder="Example:Can we see more photos?...." class="form-control")
 					br
 					input(type="submit" class="btn btn-primary"   value="Send message") 
+
+	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
+			center
+				img(src=image_location style="height:200px;width:200px;border-radius:19x;")		
+			ul(style="list-style:none;" )
+				li(style="color:black;")
+
+					b
+						p| State:  !{listing_info.state}
+						
+				li(style="color:black;")
+
+					b
+						p| City: !{listing_info.city}
+				li(style="color:black;")
+
+					b
+						p| Cost: !{listing_info.price} /per month
+				li(style="color:black;")
+
+					b
+						p| Bedrooms: !{listing_info.bedrooms}
+				li(style="color:black;")
+
+					b
+						p| Bathrooms: !{listing_info.bathrooms}
+
+			div(class="jumbotron")
+				h3 Description:
+				p| !{listing_info.description}
+
+	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
+			form(action=message_sender, method="POST" style="Color:black;")
+				legend(style="color:black;")
+					b 
+						| Send a message to the owner
+				fieldset
+					label(for="email") Your email:
+					br
+					input(type="text" name="email" class="form-control" style="width:200px;")
+					br
+					label(for="message") Message:
+					br
+					textarea(name="message" placeholder="Example:Can we see more photos?...." class="form-control")
+					br
+					input(type="submit" class="btn btn-primary"   value="Send message") 
+
+
