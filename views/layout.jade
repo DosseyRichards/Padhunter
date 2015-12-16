@@ -1,5 +1,6 @@
 doctype html
 htmL
+	meta(name="viewport" content="width=device-width, initial-scale=1")
 	head
 		title Candy Lease
 		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
@@ -11,19 +12,22 @@ htmL
 		br
 		div(class="container-fluid")
 			nav(class="navbar navbar-inverse navbar-fixed-top")			
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")
+							img(src="/logo_images/Candy_Lease_logo.png" style="width:50px;height:50px;")
 						a(class="navbar-brand" href="/") Candy Lease
-						ul(class="nav navbar-nav")
-							li(role="presentation")  
-								a(href="/search") Search
-									i(class="fa fa-search" style="Color:white;padding-left:4px;")
-							li(role="presentation")
-								a(href="/Add-listing") Add a listing
-									i(class="fa fa-home" style="Color:white;padding-left:4px;")
-						ul(class="nav navbar-nav navbar-right" style="padding-right:150px;")
-							li(role="presentation")
-								a(href="/contactus") Contact Us
-							li(role="presentation")
-								a(href="/aboutus") About Us
+						div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+							ul(class="nav navbar-nav")
+								li(role="presentation")  
+									a(href="/search") Search
+										i(class="fa fa-search" style="Color:white;padding-left:4px;")
+								li(role="presentation")
+									a(href="/Add-listing") Add a listing
+										i(class="fa fa-home" style="Color:white;padding-left:4px;")
+							ul(class="nav navbar-nav navbar-right" style="padding-right:150px;")
+								li(role="presentation")
+									a(href="/contactus") Contact Us
+								li(role="presentation")
+									a(href="/aboutus") About Us
 
 
 			br

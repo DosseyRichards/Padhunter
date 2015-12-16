@@ -180,8 +180,12 @@ router.post('/send-message/:listing_id', function(req,res){
    "reply-to": listing_email + "," + req.body.email,
    subject: "Someone wants to know more about your listing!"
 }, function(err, message) {
+    if(!err){
         res.render('message');
-
+    }
+    if(err){
+        res.send("There was an error sending the message please go back and try again.");
+    }
         }
     );
   });
@@ -196,7 +200,7 @@ router.get('/add-listing', function(req,res){
 ///Saving data from the from
 router.post('/add-listing',upload.single('image'), function(req,res){
 var city = req.body.city;
-var lower_case_city = city.toLowerCase()
+var lower_case_city = city.toLowerCase();
 
 
   var new_Listing = new Listing;
