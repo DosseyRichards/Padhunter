@@ -4,7 +4,7 @@ block content
 	center
 		h1 Search
 	br
-	div(class="col-lg-3 col-sm-12")
+	div(class="col-lg-3 hidden-sm hidden-xs")
 		div(class="jumbotron" style="background-color:pink;border-radius:90px;border-style:solid;border-color:skyblue;border-width:5px;")
 			form(action="/search" method="POST")
 				legend Search for apartments	
@@ -36,6 +36,41 @@ block content
 						
 					center
 						input(type="submit" class="btn btn-primary btn-md" value="Search")
+	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
+		div(class="btn-group")
+			a(href="#" class="btn btn-primary btn-lg ") Search For Rentals
+			a(href="#" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false") 
+				i(class="fa fa-search" style="Color:white;padding-left:4px;")
+			ul(class="dropdown-menu")
+				li
+					form(action="/search" method="POST")
+						legend Search for apartments	
+							label(for="housing_type") Housing Type:				
+							select(name="housing_type" class="form-control" required)
+								Option(default) 	
+								Option(value="Apartment") Apartment
+								Option(value="Houses") House
+							label(for="bedrooms") Bedrooms:
+							input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
+							label(for="bathrooms") Bathrooms:
+							input(type="number"  placeholder="Bathrooms" name="bathrooms" class="form-control" required)
+							label(for="state" ) State:
+							select(name="state" class="form-control" required)
+								each state in state_options
+									option(value=state.abbreviation) #{state.abbreviation}		
+							label(for="city") City:
+							input(type="text" placeholder="City" name="city" class="form-control" required)
+							br
+							u
+								b
+									| Budget:
+							label(for="min") Min $:
+							input(type="number" class="form-control" name="min" placeholder="Minimum...?" required)
+							label(for="max") Max $:
+							input(type="number" class="form-control" name="max" placeholder="Maximum...?" required)
+							center
+								input(type="submit" class="btn btn-primary btn-md" value="Search")
+			br
 	div(class="col-lg-6 col-sm-12")
 		h3(style="padding-left:3px;") Results that match your requirements: 
 		div(style="border-style:;border-top:1px solid black;padding-left:10px;")		
