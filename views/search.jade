@@ -32,44 +32,53 @@ block content
 					input(type="number" class="form-control" name="min" placeholder="Minimum...?" required)
 					label(for="max") Max $:
 					input(type="number" class="form-control" name="max" placeholder="Maximum...?" required)
-						
-						
+					br		
 					center
 						input(type="submit" class="btn btn-primary btn-md" value="Search")
 	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
-		div(class="btn-group")
-			a(href="#" class="btn btn-primary btn-lg ") Search For Rentals
-			a(href="#" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false") 
+		center
+			button(type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal") Search For Rentals
 				i(class="fa fa-search" style="Color:white;padding-left:4px;")
-			ul(class="dropdown-menu")
-				li
-					form(action="/search" method="POST")
-						legend Search for apartments	
-							label(for="housing_type") Housing Type:				
-							select(name="housing_type" class="form-control" required)
-								Option(default) 	
-								Option(value="Apartment") Apartment
-								Option(value="Houses") House
-							label(for="bedrooms") Bedrooms:
-							input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
-							label(for="bathrooms") Bathrooms:
-							input(type="number"  placeholder="Bathrooms" name="bathrooms" class="form-control" required)
-							label(for="state" ) State:
-							select(name="state" class="form-control" required)
-								each state in state_options
-									option(value=state.abbreviation) #{state.abbreviation}		
-							label(for="city") City:
-							input(type="text" placeholder="City" name="city" class="form-control" required)
-							br
-							u
-								b
-									| Budget:
-							label(for="min") Min $:
-							input(type="number" class="form-control" name="min" placeholder="Minimum...?" required)
-							label(for="max") Max $:
-							input(type="number" class="form-control" name="max" placeholder="Maximum...?" required)
-							center
-								input(type="submit" class="btn btn-primary btn-md" value="Search")
+		br
+		div(class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+			div(class="modal-dialog" role="document")
+				div(class="modal-content")
+					div(class="modal-header")
+						button(class="close" data-dismiss="modal" aria-label="Close")
+							i(class="fa fa-times")
+						h4(class="modal-title" id="myModalLabel") Search Form
+					div(class="modal-body")
+						form(action="/search" method="POST")
+							legend Search for apartments	
+							div(class="form-group")
+								label(for="housing_type") Housing Type:				
+								select(name="housing_type" class="form-control" required)
+									Option(default) 	
+									Option(value="Apartment") Apartment
+									Option(value="Houses") House
+								label(for="bedrooms") Bedrooms:
+								input(type="number"  placeholder="Bedrooms" name="bedrooms" class="form-control" required)
+								label(for="bathrooms") Bathrooms:
+								input(type="number"  placeholder="Bathrooms" name="bathrooms" class="form-control" required)
+								label(for="state" ) State:
+								select(name="state" class="form-control" required)
+									each state in state_options
+										option(value=state.abbreviation) #{state.abbreviation}		
+								label(for="city") City:
+								input(type="text" placeholder="City" name="city" class="form-control" required)
+								br
+								u
+									b
+										| Budget:
+								label(for="min") Min $:
+								input(type="number" class="form-control" name="min" placeholder="Minimum...?" required)
+								label(for="max") Max $:
+								input(type="number" class="form-control" name="max" placeholder="Maximum...?" required)
+										
+								center
+									input(type="submit" class="btn btn-primary btn-md" value="Search")
+					div(class="modal-footer")
+						button(class="btn btn-danger" data-dismiss="modal") Close
 			br
 	div(class="col-lg-6 col-sm-12")
 		h3(style="padding-left:3px;") Results that match your requirements: 
