@@ -53,39 +53,41 @@ block content
 					br
 					label(for="message") Message:
 					br
-					textarea(name="message" placeholder="Example:Can we see more photos?...." class="form-control")
+					textarea(name="message" placeholder="Ex:  Can we see more photos?...." class="form-control")
 					br
 					input(type="submit" class="btn btn-primary"   value="Send message") 
 
 	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
 			center
-				img(src=image_location style="height:200px;width:200px;border-radius:19x;")		
-			ul(style="list-style:none;" )
-				li(style="color:black;")
+				img(src=image_location style="height:200px;width:200px;border-radius:19x;")
+			br		
+			ul(class="list-group")
+				li(style="color:black;" class="list-group-item")
 
 					b
 						p| State:  !{listing_info.state}
 						
-				li(style="color:black;")
+				li(style="color:black;" class="list-group-item")
 
 					b
 						p| City: !{listing_info.city}
-				li(style="color:black;")
+				li(style="color:black;" class="list-group-item")
 
 					b
 						p| Cost: !{listing_info.price} /per month
-				li(style="color:black;")
+				li(style="color:black;" class="list-group-item")
 
 					b
 						p| Bedrooms: !{listing_info.bedrooms}
-				li(style="color:black;")
+				li(style="color:black;" class="list-group-item")
 
 					b
 						p| Bathrooms: !{listing_info.bathrooms}
 
-			div(class="jumbotron")
-				h3 Description:
-				p| !{listing_info.description}
+				li(style="color:black;" class="list-group-item")
+					u
+						h3 Description:
+					p| !{listing_info.description}
 
 	div(class="hidden-lg hidden-md col-sm-12 col-xs-12")
 			form(action=message_sender, method="POST" style="Color:black;")
@@ -99,7 +101,7 @@ block content
 					br
 					label(for="message") Message:
 					br
-					textarea(name="message" placeholder="Example:Can we see more photos?...." class="form-control")
+					textarea(name="message" placeholder="Ex:  Can we see more photos?...." class="form-control")
 					br
 					input(type="submit" class="btn btn-primary"   value="Send message") 
 
